@@ -1,0 +1,54 @@
+﻿@model IEnumerable<joespizza.Models.Pizza>
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Cart</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PizzaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+
+
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.PizzaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.ActionLink("Back to List", "List", new { id = item.PizzaId }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.PizzaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PizzaId })
+        </td>
+    </tr>
+}
+
+</table>
